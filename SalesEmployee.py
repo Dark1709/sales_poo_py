@@ -1,8 +1,8 @@
 from Employee import Employee
 
 class SalesEmployee(Employee):
-    def __init__(self, name: str, age: int, employee_id: int, salary: float, sales: float, commission_rate: float):
-        super().__init__(name, age, employee_id, salary)
+    def __init__(self, sales: float, commission_rate: float, *args, **kwargs):
+        super().__init__(*args, **kwargs)
         self.set_sales(sales)
         self.set_commission_rate(commission_rate)
         
@@ -23,14 +23,20 @@ class SalesEmployee(Employee):
     def get_commission_rate(self):
         return self.__commission_rate
     
+    def calculate_salary(self):
+        commission = self.__commission_rate * self.__sales
+        
+        return commission + self.get_salary
     
-""" falcao = SalesEmployee("Falcao", 36, 2180, 1000, 5000, 0.1)
+    
+""" falcao = SalesEmployee(5000, 0.1, 2180, 1000,"Falcao", 36, )
 print(falcao)
 print(falcao.get_name)
 print(falcao.get_age)
 print(falcao.get_employee_id)
 print(falcao.get_salary)
 print(falcao.get_sales)
-print(falcao.get_commission_rate) """
+print(falcao.get_commission_rate)
+print(falcao.calculate_salary()) """
 
         

@@ -1,8 +1,8 @@
 from Person import Person 
 
 class Employee(Person):
-    def __init__(self, name: str, age: int, employee_id: int, salary: float):
-        super().__init__(name, age)
+    def __init__(self, employee_id: int, salary: float, *args, **kwargs ):
+        super().__init__(*args, **kwargs)
         self.set_employee_id(employee_id)
         self.set_salary(salary)
         
@@ -24,10 +24,18 @@ class Employee(Person):
     def get_salary(self):
         return self.__salary
     
-""" jose = Employee("jose", 34, 2155, 200)
+    def calculate_salary(self):
+        return self.__salary
+    
+    
+    
+
+    
+""" jose = Employee(2155, 200, "jose", 34)
 print(jose)
 print(jose.get_name)
 print(jose.get_age)
 print(jose.get_employee_id)
-print(jose.get_salary) """
+print(jose.get_salary)
+print(jose.calculate_salary()) """
 
